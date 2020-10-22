@@ -11,7 +11,7 @@ let port = process.env.port || 3000;
 const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.net/KrisKringle?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(port))
+  .then(result => app.listen(port, '0.0.0.0'))
   .catch(err => console.log(err));
 
 // register view engine
