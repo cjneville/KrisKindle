@@ -1,0 +1,67 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+  <%- include("../partials/navusers.ejs") %>
+  
+  <div class="blogs content">
+    <form action="/users/assign" method="POST">
+      <button id="matchButton" class="btn btn-success">Roll it there, Colette</button>    
+      <button id="loadingButton" class="btn btn-success" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Smoke and mirrors...
+      </button>    
+    </form>      
+    <% if (users.length > 0) { %>
+      <% users.forEach(user => { %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h6 class="card-title">
+              <a class="nameLink" href="/users/<%= user._id %>">
+                <span><%= user.name %></span>
+              </a>
+              <span class="nameLinkText"> gifting to </span>
+              <a class="nameLink" href="/users/<%= user.giftingToId %>">
+                <span><%= user.giftingToName %></span>
+              </a>
+            </h6>
+            <a href="javascript:toggleState('<%= user._id %>', 'charityDone', <%= user.charityDone==true?false:true %>)" class="badge badge-<%=user.charityDone==true?"success":"danger"%>" title="Indicate if you have contributed to the charity">Charity</a>
+            <a href="javascript:toggleState('<%= user._id %>', 'presentDone', <%= user.presentDone==true?false:true  %>)" class="badge badge-<%=user.presentDone==true?"success":"danger"%>" title="Indicate if you have got the present">Present</a>
+          </div>
+        </div>    
+      <% }) %>
+    <% } else { %>
+      <p>No participants...</p>
+    <% } %>
+    
+  </div>
+  <%- include("../partials/footer.ejs") %>
+  <script>
+    document.querySelector('#loadingButton').style.display='none';
+    document.querySelector('#matchButton').style.display='none';
+    function toggleState(id, attribute, state){
+      const endpoint = `/users/toggle/${id}`;
+      var jsonObj = {_id: id};
+      jsonObj[attribute] = state;
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonObj)
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    }
+
+
+    const matchButton = document.querySelector('#matchButton');
+    matchButton.addEventListener('click', (e) => {
+      document.querySelector('#matchButton').style.display='none';
+      document.querySelector('#loadingButton').style.display='block';
+    });
+
+  </script>  
+</body>
+</html>

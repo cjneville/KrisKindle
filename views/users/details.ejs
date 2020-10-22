@@ -1,0 +1,41 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+  <%- include("../partials/navusers.ejs") %>
+  <div class="create-blog content">
+    <form action="/users/edit/<%= user._id %>" method="POST">
+      <label for="title">Name:</label>
+      <input type="text" id="name" name="name" value="<%= user.name %>">
+      <label for="snippet">Charity:</label>
+      <input type="text" id="charity" name="charity" value="<%= user.charity %>">
+      <label for="snippet">Gifting to:</label>
+      <input type="text" id="giftingToName" name="giftingToName" value="<%= user.giftingToName %>" readonly>      
+      <label for="body">Wishlist:</label>
+      <textarea id="wishlist" name="wishlist"><%= user.wishlist %></textarea>
+      <button>Update</button>      
+      <!--<button id="remove">Remove</button> -->
+    
+    </form>  
+  </div>
+
+  <%- include("../partials/footer.ejs") %>
+
+  <script>
+    const trashcan = document.querySelector('#remove');
+
+    trashcan.addEventListener('click', (e) => {
+      e.preventDefault();
+      const endpoint = '/users/<%= user._id %>';
+
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>

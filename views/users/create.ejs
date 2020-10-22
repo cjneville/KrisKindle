@@ -1,0 +1,26 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+  <%- include("../partials/navusers.ejs") %>
+
+  <div class="create-blog content">
+    <form action="/users/add" method="POST">
+      <label for="title">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="snippet">Charity:</label>
+      <input type="text" id="charity" name="charity">
+      <label for="snippet">Gifting to:</label>
+      <input type="text" id="giftingToName" name="giftingToName">      
+      <label for="body">Wishlist:</label>
+      <textarea id="wishlist" name="wishlist"></textarea>
+      <input type="hidden" id="giftingToId" name="giftingToId" value="-">      
+      
+        
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <%- include("../partials/footer.ejs") %>
+</body>
+</html>
