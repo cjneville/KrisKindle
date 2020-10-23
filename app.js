@@ -1,8 +1,8 @@
 const express = require('express');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const blogRoutes = require('./routes/blogRoutes');
-const userRoutes = require('./routes/userRoutes');
+// const morgan = require('morgan');
+// const mongoose = require('mongoose');
+// const blogRoutes = require('./routes/blogRoutes');
+// const userRoutes = require('./routes/userRoutes');
 // express app
 const app = express();
 let port = process.env.port || 5000;
@@ -16,6 +16,7 @@ const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.n
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+/*
 // register view engine
 app.set('view engine', 'ejs');
 
@@ -28,13 +29,13 @@ app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
 });
-
+*/
 // routes
 app.get('/', (req, res) => {
-  res.redirect('/about');
+  //res.redirect('/about');
 });
 
-
+/*
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
@@ -47,3 +48,4 @@ app.use('/users', userRoutes);
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+*/
