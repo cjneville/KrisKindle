@@ -10,10 +10,12 @@ let port = process.env.port || 5000;
 // connect to mongodb & listen for requests
 const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.net/KrisKringle?retryWrites=true&w=majority';
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(port))
-  .catch(err => console.log(err));
-
+// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(result => app.listen(port))
+//   .catch(err => console.log(err));
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
 // register view engine
 app.set('view engine', 'ejs');
 
@@ -29,7 +31,7 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  res.redirect('/users');
+  res.redirect('/about');
 });
 
 
