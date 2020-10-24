@@ -32,15 +32,14 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-//  res.send('Hello World!')
-  res.redirect('/about');
+  res.redirect('/users');
 });
 
 
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
-/*
+
 // blog routes
 app.use('/blogs', blogRoutes);
 app.use('/users', userRoutes);
@@ -49,4 +48,3 @@ app.use('/users', userRoutes);
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
-*/
