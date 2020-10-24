@@ -16,7 +16,7 @@ const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.n
 // app.listen(PORT, () => {
 //   console.log(`Example app listening at http://localhost:${PORT}`)
 // })
-/*
+
 // register view engine
 app.set('view engine', 'ejs');
 
@@ -29,12 +29,11 @@ app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
 });
-*/
+
 // routes
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-
-  //res.redirect('/about');
+//  res.send('Hello World!')
+  res.redirect('/about');
 });
 
 
