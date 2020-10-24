@@ -5,7 +5,7 @@ const express = require('express');
 // const userRoutes = require('./routes/userRoutes');
 // express app
 const app = express();
-let port = process.env.port || 5000;
+const PORT = process.env.PORT || 3000
 
 // connect to mongodb & listen for requests
 const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.net/KrisKringle?retryWrites=true&w=majority';
