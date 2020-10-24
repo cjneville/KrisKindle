@@ -1,8 +1,8 @@
 const express = require('express');
-// const morgan = require('morgan');
-// const mongoose = require('mongoose');
-// const blogRoutes = require('./routes/blogRoutes');
-// const userRoutes = require('./routes/userRoutes');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const blogRoutes = require('./routes/blogRoutes');
+const userRoutes = require('./routes/userRoutes');
 // express app
 const app = express();
 const PORT = process.env.PORT || 3000
