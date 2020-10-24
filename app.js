@@ -10,12 +10,18 @@ const PORT = process.env.PORT || 3000
 // connect to mongodb & listen for requests
 const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.net/KrisKringle?retryWrites=true&w=majority';
 
+<<<<<<< HEAD
  mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
    .then(result => app.listen(PORT))
    .catch(err => console.log(err));
 // app.listen(PORT, () => {
 //   console.log(`Example app listening at http://localhost:${PORT}`)
 // })
+=======
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(result => app.listen(port))
+  .catch(err => console.log(err));
+>>>>>>> 813fef24546462fe7e2a1660be65aeeef8bffecb
 
 // register view engine
 app.set('view engine', 'ejs');
