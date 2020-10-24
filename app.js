@@ -13,8 +13,8 @@ const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.n
 // mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 //   .then(result => app.listen(port))
 //   .catch(err => console.log(err));
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
 })
 /*
 // register view engine
@@ -35,11 +35,11 @@ app.get('/', (req, res) => {
   //res.redirect('/about');
 });
 
-/*
+
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
-
+/*
 // blog routes
 app.use('/blogs', blogRoutes);
 app.use('/users', userRoutes);
