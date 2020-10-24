@@ -8,34 +8,50 @@
       <label for="title">Name:</label>
       <input type="text" id="name" name="name" value="<%= user.name %>">
       <label for="snippet">Charity:</label>
-      <input type="text" id="charity" name="charity" value="<%= user.charity %>">
+
+
+      <input style="width:92%; display:inline;" type="text" id="charity" name="charity" value="<%= user.charity %>">
+      <svg id="linkSvg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-link" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"></path>
+      <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"></path>
+      </svg>
+
       <label for="snippet">Gifting to:</label>
-      <input type="text" id="giftingToName" name="giftingToName" value="<%= user.giftingToName %>" readonly>      
+      <input type="text" id="giftingToName" name="giftingToName" value="<%= user.giftingToName %>" readonly>
       <label for="body">Wishlist:</label>
       <textarea id="wishlist" name="wishlist"><%= user.wishlist %></textarea>
-      <button>Update</button>      
+      <button>Update</button>
       <!--<button id="remove">Remove</button> -->
-    
-    </form>  
+
+    </form>
   </div>
 
   <%- include("../partials/footer.ejs") %>
 
   <script>
-    const trashcan = document.querySelector('#remove');
+    // const trashcan = document.querySelector('#remove');
+    //
+    // trashcan.addEventListener('click', (e) => {
+    //   e.preventDefault();
+    //   const endpoint = '/users/<%= user._id %>';
+    //
+    //   fetch(endpoint, {
+    //     method: 'DELETE',
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => window.location.href = data.redirect)
+    //   .catch(err => console.log(err));
+    // });
+    const linkSvg = document.querySelector('#linkSvg');
+    if(document.querySelector('#charity').value && document.querySelector('#charity').value.indexOf("http") > -1) {
+      linkSvg.addEventListener('click', (e) => {
+      window.open(document.querySelector('#charity').value, "_blank");
+      });
+    } else {
+      linkSvg.style.display='none';
+      document.querySelector('#charity').style.width='100%';
+    }
 
-    trashcan.addEventListener('click', (e) => {
-      e.preventDefault();
-      const endpoint = '/users/<%= user._id %>';
-
-      fetch(endpoint, {
-        method: 'DELETE',
-      })
-      .then(response => response.json())
-      .then(data => window.location.href = data.redirect)
-      .catch(err => console.log(err));
-    });
-    
   </script>
 </body>
 </html>
