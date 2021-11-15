@@ -40,7 +40,7 @@ app.get('/about', (req, res) => {
 });
 
 // blog routes
-app.use('/blogs', blogRoutes);
+//app.use('/blogs', blogRoutes);
 app.use('/users', userRoutes);
 
 // 404 page
