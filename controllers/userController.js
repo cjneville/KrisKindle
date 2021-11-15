@@ -37,8 +37,8 @@ const user_create_post = (req, res) => {
     });
 }
 
-function between(min, max) {  
-  
+function between(min, max) {
+
   return Math.floor(
     Math.random() * (max - min) + min
   )
@@ -47,7 +47,7 @@ function between(min, max) {
 
 
 async function matchNames(names)  {
-  var array = [];  
+  var array = [];
 //   if (names.length % 2 != 0) {
 //       console.log("You must have an even number of names. You currently have " + names.length + " names.");
 //   } else {
@@ -61,12 +61,12 @@ async function matchNames(names)  {
       while (arr1.length) {
           var name1 = arr1.pop(), // get the last value of arr1
               name2 = arr2[0] == name1 ? arr2.pop() : arr2.shift();
-              //        ^^ if the first value is the same as name1, 
+              //        ^^ if the first value is the same as name1,
               //           get the last value, otherwise get the first
           name1.giftingToName = name2.name;
           name1.giftingToId = name2._id;
            await User.updateOne({_id: name1._id}, name1);
-           
+
 
 
           console.log(name1.name + ' gets ' + name2.name);
@@ -75,7 +75,7 @@ async function matchNames(names)  {
 }
 
 const user_assign = (req, res) => {
-  var array = [];  
+  var array = [];
   User.find().sort({ createdAt: -1 })
     .then(function(result) {
             matchNames(result).then(() => {res.redirect('/users')});
@@ -83,11 +83,11 @@ const user_assign = (req, res) => {
     .catch(err => {
       console.log(err);
     });
-  
+
 //   const user = new User(req.body);
 //   user.save()
 //     .then(result => {
-      
+
 //     })
 //     .catch(err => {
 //       console.log(err);
@@ -132,7 +132,7 @@ const user_put = (req, res) => {
    .catch(err => {
      console.log(err);
    });
-  
+
 
 }
 

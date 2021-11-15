@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000
 
 // connect to mongodb & listen for requests
 const dbURI = 'mongodb+srv://kriskringle:kriskringle@kriskringle.veoyp.mongodb.net/KrisKringle?retryWrites=true&w=majority';
-
  mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
    .then(result => app.listen(PORT))
    .catch(err => console.log(err));
