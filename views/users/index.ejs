@@ -38,7 +38,7 @@
   <%- include("../partials/footer.ejs") %>
   <script>
     document.querySelector('#loadingButton').style.display='none';
-    //document.querySelector('#matchButton').style.display='none';
+    document.querySelector('#matchButton').style.display='none';
     function toggleState(id, attribute, state){
       const endpoint = `/users/toggle/${id}`;
       var jsonObj = {_id: id};
