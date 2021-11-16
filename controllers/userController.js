@@ -76,9 +76,6 @@ async function matchNames(names)  {
 
 const user_assign = (req, res) => {
   var array = [];
-  for (var i = 0; i < 10; i++) {
-
-
   User.find().sort({ createdAt: -1 })
     .then(function(result) {
             matchNames(result).then(() => {res.redirect('/users')});
@@ -86,7 +83,7 @@ const user_assign = (req, res) => {
     .catch(err => {
       console.log(err);
     });
-  }
+
 //   const user = new User(req.body);
 //   user.save()
 //     .then(result => {
